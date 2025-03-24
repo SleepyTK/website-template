@@ -89,8 +89,10 @@
 
     a,
     button {
-      cursor: pointer;
-      touch-action: manipulation;
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+        touch-action: manipulation;
     }
 
     input,
@@ -160,12 +162,7 @@
         --space-2xl: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
         --space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
     }
-    
-    .dark-mode {
-        /* colors */
-        --clr-bg: rgb(20, 20, 20);
-        --clr-text: rgb(220, 220, 220);
-    }
+
         
     body {
         background-color: var(--clr-bg);
@@ -182,8 +179,28 @@
     h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h4); }
     h5 { font-size: var(--font-size-h5); line-height: var(--line-height-h5); }
     h6 { font-size: var(--font-size-h6); line-height: var(--line-height-h6); }
-    p { font-size: var(--font-size-p);  line-height: var(--line-height-p); text-wrap: pretty;}
+    p { font-size: var(--font-size-p);  line-height: var(--line-height-p); text-wrap: pretty; max-width: 65ch;}
     sub { font-size: var(--font-size-sub);line-height: var(--line-height-sub); }
+
+    /* NAV styling start */
+
+    .navigation-bar {
+        --clr-nav-bg: rgb(250, 250, 255);
+        --clr-nav-text: rgb(30, 30, 30);
+        --clr-nav-border:rgb(255, 255, 255);
+
+        background: var(--clr-nav-bg);
+        color: var(--clr-nav-text);
+
+        border-bottom: 1px solid var(--clr-nav-border);
+
+    }
+
+    a[href="#"] {
+        background-color: red;
+    }
+
+    /* NAV styling end */
 }
 
 
@@ -228,4 +245,15 @@
     .bg-gray{ background-color: var(--clr-gray); color: var(--clr-white); }
     .bg-light{ background-color: var(--clr-light); color: var(--clr-dark); }
     .bg-white{ background-color: var(--clr-white); color: var(--clr-dark); }
+
+    .dark-mode {
+        /* :root */
+        --clr-bg: rgb(20, 20, 20);
+        --clr-text: rgb(220, 220, 220);
+
+        /* navigation bar */
+        --clr-nav-bg: rgb(20, 20, 20);
+        --clr-nav-text: rgb(220, 220, 220);
+        --clr-nav-border: rgb(241, 14, 14);
+    }
 }
