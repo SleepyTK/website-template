@@ -32,7 +32,7 @@
         overflow-x: hidden;
     }
 
-    :is(ul, ol)[class] {
+    :is(ul, ol) {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -118,6 +118,10 @@
         /* colors */
         --clr-bg: rgb(250, 250, 255);
         --clr-text: rgb(30, 30, 30);
+
+        --clr-nav-bg: rgb(250, 250, 255);
+        --clr-nav-text: rgb(30, 30, 30);
+        --clr-nav-border:rgb(255, 255, 255);
     
         --clr-blue: #007BFF;
         --clr-cyan: #17A2B8;
@@ -133,23 +137,23 @@
         /* fonts */
         --font-size-base:16px;
         --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        --font-size-sub: clamp(0.78rem, 0.775rem + 0.0325vw, 0.8rem);
-        --font-size-p: clamp(0.9375rem, 0.915rem + 0.110vw, 1rem);
-        --font-size-h6: clamp(1.125rem, 1.080rem + 0.215vw, 1.25rem);
-        --font-size-h5: clamp(1.35rem, 1.275rem + 0.370vw, 1.55rem);
-        --font-size-h4: clamp(1.62rem, 1.500rem + 0.580vw, 1.95rem);
-        --font-size-h3: clamp(1.95rem, 1.775rem + 0.865vw, 2.45rem);
-        --font-size-h2: clamp(2.33rem, 2.080rem + 1.250vw, 3.05rem);
-        --font-size-h1: clamp(2.80rem, 2.445rem + 1.765vw, 3.80rem);
+        --font-size-200: clamp(0.78rem, 0.775rem + 0.0325vw, 0.8rem);
+        --font-size-300: clamp(0.9375rem, 0.915rem + 0.110vw, 1rem);
+        --font-size-400: clamp(1.125rem, 1.080rem + 0.215vw, 1.25rem);
+        --font-size-500: clamp(1.35rem, 1.275rem + 0.370vw, 1.55rem);
+        --font-size-600: clamp(1.62rem, 1.500rem + 0.580vw, 1.95rem);
+        --font-size-700: clamp(1.95rem, 1.775rem + 0.865vw, 2.45rem);
+        --font-size-800: clamp(2.33rem, 2.080rem + 1.250vw, 3.05rem);
+        --font-size-900: clamp(2.80rem, 2.445rem + 1.765vw, 3.80rem);
     
-        --line-height-sub: clamp(1.092rem, 1.085rem + 0.0455vw, 1.12rem);
-        --line-height-p: clamp(1.3125rem, 1.282rem + 0.154vw, 1.4rem);
-        --line-height-h6: clamp(1.575rem, 1.44rem + 0.301vw, 1.75rem);
-        --line-height-h5: clamp(1.89rem, 1.725rem + 0.518vw, 2.17rem);
-        --line-height-h4: clamp(2.26rem, 2.100rem + 0.812vw, 2.73rem);
-        --line-height-h3: clamp(2.73rem, 2.485rem + 1.215vw, 3.43rem);
-        --line-height-h2: clamp(3.26rem, 2.915rem + 1.750vw, 4.27rem);
-        --line-height-h1: clamp(3.92rem, 3.57rem + 2.475vw, 5.32rem);
+        --line-height-200: clamp(1.092rem, 1.085rem + 0.0455vw, 1.12rem);
+        --line-height-300: clamp(1.3125rem, 1.282rem + 0.154vw, 1.4rem);
+        --line-height-400: clamp(1.575rem, 1.44rem + 0.301vw, 1.75rem);
+        --line-height-500: clamp(1.89rem, 1.725rem + 0.518vw, 2.17rem);
+        --line-height-600: clamp(2.26rem, 2.100rem + 0.812vw, 2.73rem);
+        --line-height-700: clamp(2.73rem, 2.485rem + 1.215vw, 3.43rem);
+        --line-height-800: clamp(3.26rem, 2.915rem + 1.750vw, 4.27rem);
+        --line-height-900: clamp(3.92rem, 3.57rem + 2.475vw, 5.32rem);
     
         /* spacing */
         --space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
@@ -162,7 +166,17 @@
         --space-2xl: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
         --space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
     }
+    
+    .dark-mode {
+        /* colors */
+        --clr-bg: rgb(20, 20, 20);
+        --clr-text: rgb(220, 220, 220);
 
+        /* navigation bar */
+        --clr-nav-bg: rgb(20, 20, 20);
+        --clr-nav-text: rgb(220, 220, 220);
+        --clr-nav-border: rgb(100, 100, 100);
+    }
         
     body {
         background-color: var(--clr-bg);
@@ -173,31 +187,50 @@
     }
 
     h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
-    h1 { font-size: var(--font-size-h1); line-height: var(--line-height-h1); }
-    h2 { font-size: var(--font-size-h2); line-height: var(--line-height-h2); }
-    h3 { font-size: var(--font-size-h3); line-height: var(--line-height-h3); }
-    h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h4); }
-    h5 { font-size: var(--font-size-h5); line-height: var(--line-height-h5); }
-    h6 { font-size: var(--font-size-h6); line-height: var(--line-height-h6); }
-    p { font-size: var(--font-size-p);  line-height: var(--line-height-p); text-wrap: pretty; max-width: 65ch;}
-    sub { font-size: var(--font-size-sub);line-height: var(--line-height-sub); }
+    h1 { font-size: var(--font-size-900); line-height: var(--line-height-900); }
+    h2 { font-size: var(--font-size-800); line-height: var(--line-height-800); }
+    h3 { font-size: var(--font-size-700); line-height: var(--line-height-700); }
+    h4 { font-size: var(--font-size-600); line-height: var(--line-height-600); }
+    h5 { font-size: var(--font-size-500); line-height: var(--line-height-500); }
+    h6 { font-size: var(--font-size-400); line-height: var(--line-height-400); }
+    p { font-size: var(--font-size-300);  line-height: var(--line-height-300); text-wrap: pretty; max-width: 65ch;}
+    sub { font-size: var(--font-size-200);line-height: var(--line-height-200); }
 
     /* NAV styling start */
 
+    /* currently working on this, fix dark/lightmode styling by giving custom properties to the accent colors instead of preset colors */
+
     .navigation-bar {
-        --clr-nav-bg: rgb(250, 250, 255);
-        --clr-nav-text: rgb(30, 30, 30);
-        --clr-nav-border:rgb(255, 255, 255);
+        font-size: var(--font-size-400);
 
         background: var(--clr-nav-bg);
         color: var(--clr-nav-text);
 
         border-bottom: 1px solid var(--clr-nav-border);
-
     }
 
-    a[href="#"] {
-        background-color: red;
+    .navigation-bar__items {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: var(--space-s);
+        padding-inline: var(--space-s);
+    }
+
+    .navigation-bar__item {
+        padding: var(--space-s);
+        
+        &:hover {
+            background-color: var(--clr-gray);
+        }
+    }
+
+    .navigation-bar__link {
+        padding: var(--space-s);
+    }
+
+    .navigation-bar__item:has(a[href="#"]) {
+        background-color: var(--clr-dark);
     }
 
     /* NAV styling end */
@@ -245,15 +278,4 @@
     .bg-gray{ background-color: var(--clr-gray); color: var(--clr-white); }
     .bg-light{ background-color: var(--clr-light); color: var(--clr-dark); }
     .bg-white{ background-color: var(--clr-white); color: var(--clr-dark); }
-
-    .dark-mode {
-        /* :root */
-        --clr-bg: rgb(20, 20, 20);
-        --clr-text: rgb(220, 220, 220);
-
-        /* navigation bar */
-        --clr-nav-bg: rgb(20, 20, 20);
-        --clr-nav-text: rgb(220, 220, 220);
-        --clr-nav-border: rgb(241, 14, 14);
-    }
 }
