@@ -1,11 +1,19 @@
-class NavBar extends HTMLElement {
+const navbarLinks = [
+    { label: 'Home', href: 'index.html' },
+    { label: 'About', href: 'about.html' },
+    { label: 'The Project', href: 'project.html' }
+  ];
+  
+  class NavBar extends HTMLElement {
     constructor() {
       super();
     }
   
     connectedCallback() {
-      const links = this.getAttribute('links')?.split(',') || [];
-      const hrefs = this.getAttribute('hrefs')?.split(',') || [];
+      const currentPath = window.location.pathname;
+  
+      const section = document.createElement('section');
+      section.className = 'grid-layout';
   
       const nav = document.createElement('nav');
       nav.className = 'full-width navigation-bar';
@@ -13,25 +21,32 @@ class NavBar extends HTMLElement {
       const ul = document.createElement('ul');
       ul.className = 'navigation-bar__items';
   
-      links.forEach((label, i) => {
+      navbarLinks.forEach((link) => {
         const li = document.createElement('li');
         li.className = 'navigation-bar__item';
   
         const a = document.createElement('a');
         a.className = 'navigation-bar__link';
-        a.textContent = ` ${label.trim()}`;
-        a.href = hrefs[i]?.trim() || '#';
+        a.textContent = ` ${link.label}`;
+  
+        if (currentPath.includes(link.href)) {
+          a.href = '#';
+          a.classList.add('current-page');
+          a.setAttribute('aria-current', 'page');
+        } else {
+          a.href = link.href;
+        }
   
         li.appendChild(a);
         ul.appendChild(li);
       });
   
       nav.appendChild(ul);
+      section.appendChild(nav);
   
-      // 🚀 Replace <sleepy-navbar> with <nav>
-      this.replaceWith(nav);
+      this.replaceWith(section);
     }
   }
   
   customElements.define('sleepy-navbar', NavBar);
-  
+ 
