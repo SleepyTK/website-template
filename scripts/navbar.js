@@ -16,10 +16,10 @@ const navbarLinks = [
       section.className = 'grid-layout';
   
       const nav = document.createElement('nav');
-      nav.className = 'full-width navigation-bar';
+      nav.className = 'grid-layout max-width navigation-bar';
   
       const ul = document.createElement('ul');
-      ul.className = 'navigation-bar__items';
+      ul.className = 'full-width navigation-bar__items';
   
       navbarLinks.forEach((link) => {
         const li = document.createElement('li');
@@ -31,7 +31,6 @@ const navbarLinks = [
   
         if (currentPath.includes(link.href)) {
           a.href = '#';
-          a.classList.add('current-page');
           a.setAttribute('aria-current', 'page');
         } else {
           a.href = link.href;

@@ -200,6 +200,12 @@
 
     /* currently working on this, fix dark/lightmode styling by giving custom properties to the accent colors instead of preset colors */
 
+    .sidebar {
+        & > ul {
+            flex-direction: column;
+        }
+    }
+
     .navigation-bar {
         font-size: var(--font-size-400);
 
@@ -247,7 +253,6 @@
         --content-size: min(100% - (var(--space-m) * 2), var(--content-max-width));
         --breakout-size: minmax(var(--space-xs), calc((var(--breakout-max-width) - var(--content-max-width)) / 2));
         --full-width-size: minmax(calc(var(--space-m) - var(--space-xs)), calc((var(--full-width-max-width) - var(--breakout-max-width)) / 2));
-        --max-width-size: minmax(0, calc(var(--max-width) - (var(--full-width-size) * 2) - (var(--breakout-size) * 2)));
     
         display: grid;
         justify-content: center;
