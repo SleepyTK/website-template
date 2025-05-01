@@ -1,7 +1,7 @@
 const navbarLinks = [
     { label: 'Home', href: 'index.html' },
     { label: 'About', href: 'about.html' },
-    { label: 'The Project', href: 'project.html' }
+    { label: 'Projects', href: 'projects.html' }
   ];
   
   class NavBar extends HTMLElement {
@@ -31,6 +31,7 @@ const navbarLinks = [
   
         if (currentPath.includes(link.href)) {
           a.href = '#';
+          li.classList.add('current-page');
           a.setAttribute('aria-current', 'page');
         } else {
           a.href = link.href;
@@ -46,6 +47,4 @@ const navbarLinks = [
       this.replaceWith(section);
     }
   }
-  
   customElements.define('sleepy-navbar', NavBar);
- 
